@@ -230,14 +230,14 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
+  { 'echasnovski/mini.align', version = 'false', opts = {} },
+  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
-
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
@@ -286,6 +286,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b', group = '[B]uffer' },
       }
     end,
   },
@@ -572,6 +573,7 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {},
+        marksman = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -611,7 +613,10 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'pyright',
         'autopep8',
+        'glow',
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -659,6 +664,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'autopep8' },
+        markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
