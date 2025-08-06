@@ -762,6 +762,7 @@ require('lazy').setup({
         json = { 'prettierd', 'prettier', stop_after_first = true },
         go = { 'gofmt' },
         xml = { 'xmlformatter' },
+        rust = { 'rustfmt' },
       },
     },
   },
@@ -941,6 +942,8 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      require('mini.align').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
