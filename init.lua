@@ -615,6 +615,7 @@ require('lazy').setup({
         'black',
         'isort',
         'prettierd',
+        'xmlformatter',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
