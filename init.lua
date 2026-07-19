@@ -166,6 +166,8 @@ vim.o.confirm = true
 
 -- Set tabstop to 4 so that a tab will display as 4 spaces
 vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -598,7 +600,16 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       local servers = {
         lua_ls = {},
-        basedpyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'basic',
+                diagnosticMode = 'workspace',
+              },
+            },
+          },
+        },
         ts_ls = {},
       }
 
