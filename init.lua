@@ -650,6 +650,8 @@ do
         },
       },
     },
+
+    ruff = {},
   }
 
   vim.pack.add {
@@ -676,8 +678,7 @@ do
   -- You can press `g?` for help in this menu.
   local ensure_installed = vim.tbl_keys(servers or {})
   vim.list_extend(ensure_installed, {
-    'black',
-    'isort',
+    'ruff',
     'prettierd',
     'xmlformatter',
   })
@@ -721,7 +722,7 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
+      python = { 'ruff_organize_imports', 'ruff_format' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
