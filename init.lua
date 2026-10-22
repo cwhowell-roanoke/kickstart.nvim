@@ -652,6 +652,7 @@ do
     },
 
     ruff = {},
+    graphql = {},
   }
 
   vim.pack.add {
@@ -707,6 +708,7 @@ do
         python = true,
         javascript = true,
         typescript = true,
+        graphql = true,
         json = true,
         xml = true,
       }
@@ -726,6 +728,7 @@ do
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
+      graphql = { 'prettierd', 'prettier', stop_after_first = true },
       xml = { 'xmlformatter' },
     },
   }
