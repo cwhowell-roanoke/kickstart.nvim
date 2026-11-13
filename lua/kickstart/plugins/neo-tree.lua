@@ -9,7 +9,7 @@ vim.pack.add {
 
 vim.keymap.set('n', '\\', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
 
----@type neotree.Config.Base
+---@type neotree.Config
 local config = {
   -- If a user has a sources list it will replace this one.
   -- Only sources listed here will be loaded.
@@ -476,6 +476,7 @@ local config = {
       ['m'] = 'move', -- takes text input for destination, also accepts the config.show_path and config.insert_as options
       ['e'] = 'toggle_auto_expand_width',
       ['q'] = 'close_window',
+      ['\\'] = 'close_window',
       ['?'] = 'show_help',
       -- You can sort by command name with:
       -- ["?"] = { "show_help", config = { sorter = function(a, b) return a.mapping.text < b.mapping.text end } },
@@ -549,7 +550,7 @@ local config = {
     -- items won't be marked if they are visible.
     check_gitignore_in_search = true,
     filtered_items = {
-      visible = false, -- when true, they will just be displayed differently than normal items
+      visible = true, -- when true, they will just be displayed differently than normal items
       force_visible_in_empty_folder = false, -- when true, hidden files will be shown if the root folder is otherwise empty
       children_inherit_highlights = true, -- whether children of filtered parents should inherit their parent's highlight group
       show_hidden_count = true, -- when true, the number of hidden items in each folder will be shown as the last entry
@@ -622,7 +623,7 @@ local config = {
     group_empty_dirs = false, -- when true, empty folders will be grouped together
     search_limit = 50, -- max number of search results when using filters
     follow_current_file = {
-      enabled = false, -- This will find and focus the file in the active buffer every time
+      enabled = true, -- This will find and focus the file in the active buffer every time
       --               -- the current file is changed while the tree is open.
       leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
     },
@@ -631,7 +632,7 @@ local config = {
     -- "open_current",-- netrw disabled, opening a directory opens within the
     -- window like netrw would, regardless of window.position
     -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-    use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+    use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
     -- instead of relying on nvim autocmd events.
   },
   buffers = {
@@ -786,18 +787,4 @@ local config = {
   },
 }
 
-require('neo-tree').setup {
-  filesystem = {
-    window = {
-      mappings = {
-        ['\\'] = 'close_window',
-      },
-    },
-    filtered_items = {
-      hide_dotfiles = false,
-      hide_ignored = false,
-    },
-  },
-  use_libuv_file_watcher = true,
-  follow_current_file = { enabled = true },
-}
+require('neo-tree').setup(config)
