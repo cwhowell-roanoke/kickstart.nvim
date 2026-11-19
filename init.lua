@@ -756,6 +756,7 @@ do
         typescript = true,
         graphql = true,
         json = true,
+        jsonc = true,
         xml = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
@@ -774,6 +775,7 @@ do
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
+      jsonc = { 'prettierd', 'prettier', stop_after_first = true },
       graphql = { 'prettierd', 'prettier', stop_after_first = true },
       xml = { 'xmlformatter' },
     },
